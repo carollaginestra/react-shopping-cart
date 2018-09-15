@@ -1,56 +1,27 @@
 import React, { Component } from 'react';
-import Checkout from './components/checkout';
+import Summary from './components/Summary';
+import Products from './components/Products';
+import Header from './components/Header';
 
 import './styles/css/style.css';
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
 
-  //   this.state = {
-  //     toggle: true,
-  //     labelText: "",
-  //   }
-  // }
+    render() {
+        return (
+            <div className="container">
+                <Header title="Checkout" />
 
-  // setLabelText = (labelText) => {
-  //   this.setState({labelText})
-  // }
+                <main>
+                    <Products />
 
-  // toggle = () => {
-  //   this.setState({
-  //     toggle: !this.state.toggle
-  //   });
-  // }
+                    <Summary />
 
- /*   {this.state.toggle &&
-          <p>Toggle content</p>
-        }
-        <Product text={this.state.labelText} />
-        <OrderButton handleClick={this.setLabelText} label="Botão 1" /> 
-        
-        onClick={this.toggle} */
-
-  render() {
-    return (
-      <div className="container">
-        <header className="flex-header">
-          <a href="#">
-            <i className="fas fa-long-arrow-alt-left header-icon blue-text" />
-          </a>
-
-          <div className="page-title center">
-            <h1>Checkout</h1>
-          </div>
-        </header>
-
-        <Checkout />
-
-      </div>
-    );
-  }
+                  {/* <Button /> */}
+                </main>
+            </div>
+        );
+    }
 }
 
-
 export default App;
-

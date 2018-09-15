@@ -1,36 +1,11 @@
 import React, { Component } from 'react';
+import Summary from './components/Summary';
 import Products from './components/Products';
 import Header from './components/Header';
 
 import './styles/css/style.css';
 
 class App extends Component {
-    // constructor(props) {
-    //   super(props);
-
-    //   this.state = {
-    //     toggle: true,
-    //     labelText: "",
-    //   }
-    // }
-
-    // setLabelText = (labelText) => {
-    //   this.setState({labelText})
-    // }
-
-    // toggle = () => {
-    //   this.setState({
-    //     toggle: !this.state.toggle
-    //   });
-    // }
-
-    /*   {this.state.toggle &&
-          <p>Toggle content</p>
-        }
-        <Product text={this.state.labelText} />
-        <OrderButton handleClick={this.setLabelText} label="Botão 1" />
-
-        onClick={this.toggle} */
 
     render() {
         return (
@@ -38,11 +13,11 @@ class App extends Component {
                 <Header title="Checkout" />
 
                 <main>
-                  <Products />
+                    <Products />
 
-                  {/* <Summary />
+                    <Summary />
 
-                  <Button /> */}
+                  {/* <Button /> */}
                 </main>
             </div>
         );

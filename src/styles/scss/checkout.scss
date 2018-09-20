@@ -53,7 +53,7 @@ a {
 }
 
 .blue-text {
-    color: #00c7cd;
+    color: $primary-color;
 }
 
 .grey-text {
@@ -111,25 +111,28 @@ a {
     }
 }
 
-.blue-button, .light-button {
+.btn {
     border-radius: 4px;
     border: 0;
-    padding: 15px;
-    max-width: 100%;
-    width: 100%;
-    color: #fff;
-    font-weight: bold;
     outline: 0;
     transition: .2s ease-out;
     margin: 30px 0;
 }
 
-.blue-button {
-    background: #00c7cd;
+.btn-primary {
+    background: $primary-color;
+    color: #fff;
+    font-weight: bold;
+
+    &:hover {
+        background: #00b2b5;
+    }
 }
 
-.light-button {
-    background: #00b2b5;
+.btn-lg {
+    padding: 15px;
+    max-width: 100%;
+    width: 100%;
 }
 
 .img-responsive {

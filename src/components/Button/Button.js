@@ -10,6 +10,5 @@ const ButtonR = ({color, size, text, type, disabled}) => {
         </button>
     )
 }
-    
 
 export default ButtonR;

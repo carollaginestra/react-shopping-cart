@@ -7,7 +7,6 @@ import Header from './components/Header';
 import './styles/css/style.css';
 
 class App extends Component {
-
     render() {
         return (
             <div className="container">
@@ -18,7 +17,17 @@ class App extends Component {
 
                     <Summary />
 
-                    <Button />
+                    <Button
+                        type="button"
+                        size="lg"
+                        onClick={() => alert('Pagamento confirmado!')}
+                        primary
+                    >
+                        Place Order
+                    </Button>
+                    <Button size="lg" secondary>
+                        Cancel
+                    </Button>
                 </main>
             </div>
         );

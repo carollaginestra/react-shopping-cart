@@ -129,6 +129,17 @@ a {
     }
 }
 
+.btn-secondary {
+    background: white;
+    border: 1px solid red;
+    color: black;
+    font-weight: bold;
+
+    &:hover {
+        border-color: green;
+    }
+}
+
 .btn-lg {
     padding: 15px;
     max-width: 100%;

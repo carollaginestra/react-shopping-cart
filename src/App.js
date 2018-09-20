@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from './components/Button';
 import Summary from './components/Summary';
 import Products from './components/Products';
 import Header from './components/Header';
@@ -17,7 +18,7 @@ class App extends Component {
 
                     <Summary />
 
-                  {/* <Button /> */}
+                    <Button />
                 </main>
             </div>
         );

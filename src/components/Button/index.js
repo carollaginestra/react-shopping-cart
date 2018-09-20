@@ -15,7 +15,13 @@ class Button extends React.Component {
         return(
             <div>
                 {buttons.map((button, index) => (
-                    <ButtonR {...button} key={index} />
+                    <ButtonR 
+                        key={index}
+                        text={button.text}
+                        size={button.size}
+                        color={button.color}
+                        type={button.type}
+                    />
                 ))}
             </div>
         );

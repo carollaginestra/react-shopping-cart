@@ -1,31 +1,22 @@
 import React from 'react';
-import ButtonR from './Button';
+import classnames from 'classnames';
 
-const buttons = [
-    {
-        text: "Place Order",
-        size: "lg",
-        color: "primary",
-        type: "submit"
-    }
-];
+const Button = ({ size, children, primary, secondary, ...props }) => {
+    const buttonClass = classnames({
+        'btn': true,
+        'btn-lg': size === 'lg',
+        'btn-primary': primary === true,
+        'btn-secondary': secondary === true,
+    });
 
-class Button extends React.Component {
-    render() {
-        return(
-            <div>
-                {buttons.map((button, index) => (
-                    <ButtonR 
-                        key={index}
-                        text={button.text}
-                        size={button.size}
-                        color={button.color}
-                        type={button.type}
-                    />
-                ))}
-            </div>
-        );
-    }
-}
+    return (
+        <button
+            {...props}
+            className={buttonClass}
+        >
+            {children}
+        </button>
+    );
+};
 
 export default Button;

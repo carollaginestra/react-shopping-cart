@@ -1,5 +1,6 @@
 import React from 'react';
 import SummaryList from './Summary';
+import { Link } from 'react-router-dom';
 
 // const content = [
 //     {
@@ -40,10 +41,11 @@ class Summary extends React.Component {
                 <SummaryList
                     item={<i className="fas fa-long-arrow-alt-right" />}
                 >
-                    Payment
+                    <Link to="/card">Payment</Link>
                 </SummaryList>
                 <SummaryList item="Free">Shipping</SummaryList>
                 <SummaryList item="$ 166">Total</SummaryList>
+
             </ul>
         );
     }

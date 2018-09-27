@@ -1,13 +1,12 @@
 import React from 'react';
 
-const SummaryList = ({ href = '#', item, children }) => (
+const SummaryList = ({ item, children }) => (
 
     <li className="w-100 list-item">
-        <a href={href}
-            className="flex justify-between grey-text medium">
+        <div className="flex justify-between grey-text medium">
             {children}
             <span>{item}</span>
-        </a>
+        </div>
     </li>
 
 );

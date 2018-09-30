@@ -1,31 +1,8 @@
 import React from 'react';
 import SummaryList from './Summary';
-import { Link } from 'react-router-dom';
-
-// const content = [
-//     {
-//         href: '#',
-//         item: 'Address',
-//         result: <i className="fas fa-long-arrow-alt-right" />,
-//     },
-//     {
-//         href: '#',
-//         item: 'Payment',
-//         result: <i className="fas fa-long-arrow-alt-right" />,
-//     },
-//     {
-//         href: '#',
-//         item: 'Shipping',
-//         result: 'Free',
-//     },
-//     {
-//         href: '#',
-//         item: 'Total',
-//         result: '$166',
-//     },
-// ];
 
 class Summary extends React.Component {
+
     render() {
         // const listItems = content.map((items, index) =>
         //     <SummaryList {...items} key={index} />
@@ -38,14 +15,13 @@ class Summary extends React.Component {
                 >
                     Address
                 </SummaryList>
-                <SummaryList
+                <SummaryList href="/method"
                     item={<i className="fas fa-long-arrow-alt-right" />}
                 >
-                    <Link to="/card">Payment</Link>
+                    Payment
                 </SummaryList>
                 <SummaryList item="Free">Shipping</SummaryList>
                 <SummaryList item="$ 166">Total</SummaryList>
-
             </ul>
         );
     }

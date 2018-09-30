@@ -15,19 +15,23 @@ class App extends Component {
                 <main>
                     <Products />
 
-                    <Summary />
+                    {/* <BrowserRouter> */}
+                        <Summary />        
+                        {/* <Main /> */}
+                    {/* </BrowserRouter> */}
 
                     <Button
-                        type="button"
+                        type="submit"
                         size="lg"
                         onClick={() => alert('Pagamento confirmado!')}
                         primary
                     >
                         Place Order
                     </Button>
-                    <Button size="lg" secondary>
+                    <Button type="button" size="lg" secondary>
                         Cancel
-                    </Button>
+                    </Button>  
+                    
                 </main>
             </div>
         );

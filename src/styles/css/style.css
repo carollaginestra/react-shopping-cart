@@ -391,6 +391,9 @@ h1 {
   font-size: 1.2em;
   color: #000; }
 
+h2 {
+  font-size: 1em; }
+
 a {
   text-decoration: none;
   outline: 0; }
@@ -456,7 +459,9 @@ a {
   border: 0;
   outline: 0;
   transition: .2s ease-out;
-  margin: 30px 0; }
+  margin: 20px 0;
+  display: inline-block;
+  box-sizing: border-box; }
 
 .btn-primary {
   background: #00c7cd;
@@ -467,11 +472,11 @@ a {
 
 .btn-secondary {
   background: white;
-  border: 1px solid red;
+  border: 1px solid #ccc;
   color: black;
   font-weight: bold; }
   .btn-secondary:hover {
-    border-color: green; }
+    border-color: #000; }
 
 .btn-lg {
   padding: 15px;
@@ -492,3 +497,48 @@ a {
 
 .flex-wrap {
   flex-wrap: wrap; }
+
+.credit {
+  margin-bottom: 40px;
+  margin-right: 20px;
+  max-height: 250px;
+  width: 100%;
+  max-width: 400px;
+  border: 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: linear-gradient(141deg, #0b1a50 0%, #1f7cdb 51%, #2cb5e8 75%);
+  background-size: cover;
+  color: #fff;
+  padding: 10px; }
+  @media only screen and (max-width: 768px) {
+    .credit {
+      margin-right: 0; } }
+  .credit_card-number {
+    font-size: 32px;
+    letter-spacing: 2px; }
+    @media only screen and (max-width: 350px) {
+      .credit_card-number {
+        font-size: 24px; } }
+  .credit-name, .credit-date {
+    text-transform: uppercase;
+    font-size: 17px;
+    height: 25px;
+    margin: 5px 0; }
+  .credit .card-items {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: uppercase; }
+
+label {
+  color: #333; }
+
+input {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #dcdcdc;
+  box-sizing: border-box; }

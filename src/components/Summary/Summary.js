@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
+
 
 const SummaryList = ({ href = '#', item, children }) => (
 
     <li className="w-100 list-item">
-        <a href={href}
-            className="flex justify-between grey-text medium">
+        <Link to={href} className="flex justify-between grey-text medium">
             {children}
             <span>{item}</span>
-        </a>
+        </Link>
     </li>
 
 );

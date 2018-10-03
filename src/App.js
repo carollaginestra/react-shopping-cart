@@ -16,7 +16,7 @@ class App extends Component {
                     <Products />
 
                     {/* <BrowserRouter> */}
-                        <Summary />        
+                        <Summary />
                         {/* <Main /> */}
                     {/* </BrowserRouter> */}
 
@@ -30,8 +30,8 @@ class App extends Component {
                     </Button>
                     <Button type="button" size="lg" secondary>
                         Cancel
-                    </Button>  
-                    
+                    </Button>
+
                 </main>
             </div>
         );

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 class Method extends React.Component {
     render() {
-
         return (
             <div className="container">
                 <Header title="Select the payment method" />
@@ -14,14 +13,14 @@ class Method extends React.Component {
                         <i className="fas fa-barcode"></i> Payment slip
                     </Link>
                 </div>
-                
+
                 <div className="w-100">
                     <Link to="/insert-card" className="btn btn-primary btn-lg">
                         <i className="far fa-credit-card"></i> Credit card
                     </Link>
                 </div>
-                
-                
+
+
 
                 <h2>Rules:</h2>
                 <p>
@@ -47,7 +46,7 @@ class Method extends React.Component {
                     ela evita o desmatamento, que é altamente lucravito.
                     Derrubar arvores da natureza é muito lucrativo!
                 </p>
-                
+
             </div>
         );
 

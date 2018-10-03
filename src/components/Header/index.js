@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = ({ href = '#', title }) => (
     <header className="flex-header">
-        <a href={href}>
+        <Link to={href}>
             <i className="fas fa-long-arrow-alt-left header-icon blue-text" />
-        </a>
+        </Link>
 
         <div className="page-title center">
             <h1>{title}</h1>

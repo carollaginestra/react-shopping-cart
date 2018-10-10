@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../Header';
+import Header from '../../Header';
 import { Link } from 'react-router-dom';
 
 
@@ -7,7 +7,7 @@ class InsertCard extends React.Component {
     constructor() {
         super()
         this.state = {
-            name: 'xxxxx xxx',
+            // name: 'xxxxx xxx',
             number: '0000000000000000',
             month: 'xx',
             day: 'xx',
@@ -16,11 +16,11 @@ class InsertCard extends React.Component {
     }
         
     //Name of Card
-    nameChange(n) {
-        this.setState({
-        name: n.target.value
-        });
-    }
+    // nameChange(n) {
+    //     this.setState({
+    //     name: n.target.value
+    //     });
+    // }
     //Card Number
     numberChange(c) {
         this.setState({
@@ -57,9 +57,8 @@ class InsertCard extends React.Component {
                             <span className="card-items">
                                 Card Holder
                             </span>
-                            <p className="credit-name">
-                                {this.state.name}
-                            </p>
+                            <div className="credit-name" id="name">
+                            </div>
                         </div>
 
                         <div>
@@ -91,8 +90,7 @@ class InsertCard extends React.Component {
 
                     <div> 
                         <label htmlFor="name"> NAME </label>
-                        <input type="text" name="name"
-                            onChange={this.nameChange.bind(this)}/>
+                        <input type="text" name="name" id="nameInput"/>
 
                         <label htmlFor="number"> NUMBER </label>
                         <input type="text" maxLength="16" name="number"
@@ -127,5 +125,36 @@ class InsertCard extends React.Component {
 
     }
 }
+
+// const initialState = (state = {}, actions) => {
+//     let {
+//         name = '',
+//     } = actions;
+    
+//     switch (actions.type) {
+//         case 'UPDATE_NAME':
+//             return Object.assign({}, state, {name: name});
+//         default:
+//             return state
+//     }
+// }
+
+// const updateNameStore = Redux.createStore(initialState)
+
+// $('#nameInput').on('input', (e) => {
+//     updateNameStore.dispatch({
+//         type: 'UPDATE_NAME',
+//         name: e.target.value
+//     });
+// });
+
+// updateNameStore.subscribe(() => {
+//     let {
+//         name
+//     } = updateNameStore.getState();
+
+//     $('#name').html(name);
+//     console.log(updateNameStore.getState());
+// });
 
 export default InsertCard;

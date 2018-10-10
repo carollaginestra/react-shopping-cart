@@ -6,11 +6,11 @@ import Method from './components/Payment';
 import InsertCard from './components/Payment/InsertCard';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { Store } from './store';
+import store from './store';
 
 ReactDOM.render(
 
-    <Provider store={Store}>
+    <Provider store={store}>
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact={true} component={App} />
@@ -19,7 +19,7 @@ ReactDOM.render(
             </Switch>
         </ BrowserRouter>
     </Provider>
-    
+
 
     , document.getElementById('root')
 );

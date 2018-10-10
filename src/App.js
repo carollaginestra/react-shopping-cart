@@ -27,8 +27,8 @@ class App extends Component {
                     </Button>
                     <Button type="button" size="lg" secondary>
                         Cancel
-                    </Button>  
-                    
+                    </Button>
+
                 </main>
             </div>
         );

@@ -15,10 +15,7 @@ class App extends Component {
                 <main>
                     <Products />
 
-                    {/* <BrowserRouter> */}
-                        <Summary />        
-                        {/* <Main /> */}
-                    {/* </BrowserRouter> */}
+                    <Summary />        
 
                     <Button
                         type="submit"

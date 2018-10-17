@@ -1,7 +1,7 @@
 const initialState = {
     products: [],
     quantity: 0,
-    id: id
+    id: null,
 };
 
 export default (state = initialState, action) => {

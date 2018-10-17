@@ -19,14 +19,13 @@ class App extends Component {
         addProduct({
             image: Product1,
             category: 'Blusa',
-            price: (Math.random() * 1000).toFixed(2),
+            price: Number((Math.random() * 1000).toFixed(2)),
             prodName: 'Blusinha da Moda',
         });
     };
 
-    
-    onRemoveProduct = ({id, dispatch, e}) => {
 
+    onRemoveProduct = ({id, dispatch, e}) => {
         let { removeProduct } = this.props;
 
         e.preventDefault();

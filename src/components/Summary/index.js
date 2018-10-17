@@ -21,7 +21,10 @@ class Summary extends React.Component {
                     Payment
                 </SummaryList>
                 <SummaryList item="Free">Shipping</SummaryList>
-                <SummaryList item="$ 166">Total</SummaryList>
+                <SummaryList>
+                Total 
+
+                </SummaryList>
             </ul>
         );
     }

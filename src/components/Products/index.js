@@ -27,8 +27,8 @@ class Products extends React.Component {
 
         return (
             <div>
-                {products.map((product, index) => (
-                    <Product {...product} key={index} />
+                {products.map((product, id) => (
+                    <Product {...product} key={id} />
                 ))}
             </div>
         );

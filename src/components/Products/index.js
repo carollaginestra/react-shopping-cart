@@ -2,28 +2,116 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Product from './Product';
 import { selectCartProducts } from '../../store/cart/selectors';
-import { removeProduct } from '../../store/cart/actions';
+import { removeProduct, removeAllProducts } from '../../store/cart/actions';
+import Message from '../Message';
+import Button from '../Button';
 
 class Products extends React.Component {
+    state = {
+        // 0 - sem sort
+        // -1 - menor -> maior
+        // 1 -> maior -> menor
+        productsBackup: this.props.products,
+        products: this.props.products,
+    };
 
-    onRemoveProduct = (product) => {
-        this.props.removeProduct(product)
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            productsBackup: nextProps.products,
+            products: nextProps.products,
+        });
     }
 
+    onRemoveProduct = product => event => {
+        event.preventDefault();
+
+        this.props.removeProduct(product.id);
+    };
+
+    onRemoveAllProducts = e => {
+        e.preventDefault();
+
+        this.props.removeAllProducts();
+    };
+
+    onSort = sort => () => {
+        // reset
+        if (sort === 0) {
+            this.setState({ products: this.state.productsBackup });
+        }
+
+        // menor -> maior
+        if (sort === -1) {
+            this.setState({
+                products: this.state.products.sort(
+                    (a, b) => a.price >= b.price,
+                ),
+            });
+        }
+
+        // maior -> menor
+        if (sort === 1) {
+            this.setState({
+                products: this.state.products.sort(
+                    (a, b) => a.price <= b.price,
+                ),
+            });
+        }
+    };
+
     render() {
-        const { products } = this.props;
+        const { products = [] } = this.state;
+
+        if (!products.length) {
+            return <Message>0 products in your cart, add some.</Message>;
+        }
 
         return (
             <div>
-                { products && products.length ? 
+                <Button
+                    type="button"
+                    size="lg"
+                    onClick={this.onRemoveAllProducts}
+                    secondary
+                >
+                    Remove all products
+                </Button>
 
-                    (products.map((product, index) => (
-                        <Product {...product} key={index}
-                        onClick={(e)=> this.onRemoveProduct(product)} />
-                    )))
+                <Button
+                    type="button"
+                    size="lg"
+                    onClick={this.onSort(-1)}
+                    secondary
+                >
+                    Sort menor -> maior
+                </Button>
 
-                    : <div>0 products in your cart, add some.</div>
-                }
+                <Button
+                    type="button"
+                    size="lg"
+                    onClick={this.onSort(1)}
+                    secondary
+                >
+                    Sort maior -> menor
+                </Button>
+
+                <Button
+                    type="button"
+                    size="lg"
+                    onClick={this.onSort(0)}
+                    secondary
+                >
+                    Reset sort
+                </Button>
+
+                {products.length &&
+                    products.map((product, index) => (
+                        <Product
+                            {...product}
+                            key={index}
+                            onDelete={this.onRemoveProduct(product)}
+                        />
+                    ))}
             </div>
         );
     }
@@ -34,9 +122,13 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-    removeProduct
+    removeProduct,
+    removeAllProducts,
 };
 
-const Connect = connect(mapStateToProps, mapDispatchToProps);
+const Connect = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+);
 
 export default Connect(Products);

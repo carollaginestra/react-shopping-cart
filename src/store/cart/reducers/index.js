@@ -1,27 +1,30 @@
 const initialState = {
     products: [],
-    quantity: 0,
-    id: null,
 };
 
 export default (state = initialState, action) => {
-    const {payload} = action;
-    if(typeof state === 'undefined') {
-        return Object.assign({}, initialState)
-    }
+    const { payload, type } = action;
 
-    switch(action.type) {
-        case 'CART_ADD_PRODUCT' : {
+    switch (type) {
+        case 'CART_ADD_PRODUCT': {
             return Object.assign({}, state, {
                 products: [...state.products, payload.product],
             });
         }
         case 'CART_REMOVE_PRODUCT': {
-            return state.products.filter(products =>
-                state.id !== payload.id
-            );
+            return {
+                ...state,
+                products: state.products.filter(({ id }) => id !== payload.id),
+            };
+        }
+        case 'CART_REMOVE_ALL_PRODUCTS': {
+            return {
+                ...state,
+                products: [],
+            };
         }
 
-        default: return state;
+        default:
+            return state;
     }
-}
+};

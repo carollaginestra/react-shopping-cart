@@ -498,6 +498,9 @@ a {
 .flex-wrap {
   flex-wrap: wrap; }
 
+.align-center {
+  align-items: center; }
+
 .credit {
   margin-bottom: 40px;
   margin-right: 20px;

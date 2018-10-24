@@ -1,34 +1,40 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Product from './Product';
-
-import Product1 from '../../images/prod1.jpg';
-import Product2 from '../../images/prod2.jpg';
-
-const products = [
-    {
-        image: Product1,
-        category: 'Men Tee',
-        prodName: 'Endless possibilities T',
-        price: 100,
-    },
-    {
-        image: Product2,
-        category: 'Men Tee',
-        prodName: 'Never say never T',
-        price: 56,
-    },
-];
+import { selectCartProducts } from '../../store/cart/selectors';
+import { removeProduct } from '../../store/cart/actions';
 
 class Products extends React.Component {
+
+    onRemoveProduct = (product) => {
+        this.props.removeProduct(product)
+    }
+
     render() {
+        const { products } = this.props;
+
         return (
             <div>
-                {products.map((product, index) => (
-                    <Product {...product} key={index} />
-                ))}
+                { products.length > 0 ? 
+                    (products.map((product, index) => (
+                        <Product {...product} key={index}
+                        onClick={()=> this.onRemoveProduct(...product)} />
+                    )))
+                    : <div>0 registered products</div>
+                }
             </div>
         );
     }
 }
 
-export default Products;
+const mapStateToProps = state => ({
+    products: selectCartProducts(state),
+});
+
+const mapDispatchToProps = {
+    removeProduct
+};
+
+const Connect = connect(mapStateToProps, mapDispatchToProps);
+
+export default Connect(Products);

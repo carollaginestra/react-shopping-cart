@@ -1,8 +1,8 @@
 import React from 'react';
 import { formatCurrency } from '../../utils/money';
 
-
 const Product = ({ image, category, prodName, price = 0, onClick }) => (
+
     <div className="box-content">
         <div className="flex justify-between align-center w-100">
             <div className="flex align-center">
@@ -14,7 +14,8 @@ const Product = ({ image, category, prodName, price = 0, onClick }) => (
                 </div>
             </div>
 
-            <button type="button" className="btn btn-secondary" onClick={onClick}>
+            <button type="button" className="btn btn-secondary"
+                onClick={onClick}>
                 <i className="far fa-trash-alt grey-text light"></i>
             </button>
         </div>

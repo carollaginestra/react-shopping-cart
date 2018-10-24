@@ -5,7 +5,6 @@ import Summary from './components/Summary';
 import Products from './components/Products';
 import Header from './components/Header';
 import { addProduct } from './store/cart/actions';
-import { removeProduct } from './store/cart/actions';
 import Product1 from './images/prod1.jpg';
 
 import './styles/css/style.css';
@@ -24,17 +23,6 @@ class App extends Component {
         });
     };
 
-
-    onRemoveProduct = ({id, dispatch, e}) => {
-        let { removeProduct } = this.props;
-
-        e.preventDefault();
-
-        removeProduct({
-            onClick: dispatch(removeProduct(id))
-        });
-
-    }
 
     render() {
         return (
@@ -67,8 +55,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = {
-    addProduct,
-    removeProduct
+    addProduct
 };
 
 // 1. state to props

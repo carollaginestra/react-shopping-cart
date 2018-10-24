@@ -15,12 +15,14 @@ class Products extends React.Component {
 
         return (
             <div>
-                { products.length > 0 ? 
+                { products && products.length ? 
+
                     (products.map((product, index) => (
                         <Product {...product} key={index}
-                        onClick={()=> this.onRemoveProduct(...product)} />
+                        onClick={(e)=> this.onRemoveProduct(product)} />
                     )))
-                    : <div>0 registered products</div>
+
+                    : <div>0 products in your cart, add some.</div>
                 }
             </div>
         );

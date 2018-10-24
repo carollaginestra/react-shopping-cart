@@ -1,6 +1,7 @@
 const initialState = {
     products: [],
     quantity: 0,
+    id: null,
 };
 
 export default (state = initialState, action) => {
@@ -16,12 +17,9 @@ export default (state = initialState, action) => {
             });
         }
         case 'CART_REMOVE_PRODUCT': {
-            return Object.assign({}, state, {
-                products: [
-                    ...state.products.slice(0, payload.product),
-                    ...state.products.slice(payload.product + 1)
-                ],
-            });
+            return state.products.filter(products =>
+                state.id !== payload.id
+            );
         }
 
         default: return state;

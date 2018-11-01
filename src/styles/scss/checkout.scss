@@ -148,11 +148,26 @@ a {
     }
 }
 
-.btn-lg {
-    padding: 15px;
-    max-width: 100%;
-    width: 100%;
-    // line-height: 68px;
+.btn {
+    &-lg {
+        padding: 15px;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    &-md {
+        padding: 15px;
+        width: 48%;
+        max-width: 100%;
+        margin: 1%;
+    }
+
+    &-sm {
+        padding: 15px;
+        width: 31%;
+        max-width: 100%;
+        margin: 1%;
+    }
 }
 
 .img-responsive {

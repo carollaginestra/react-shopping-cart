@@ -483,6 +483,18 @@ a {
   max-width: 100%;
   width: 100%; }
 
+.btn-md {
+  padding: 15px;
+  width: 48%;
+  max-width: 100%;
+  margin: 1%; }
+
+.btn-sm {
+  padding: 15px;
+  width: 31%;
+  max-width: 100%;
+  margin: 1%; }
+
 .img-responsive {
   max-width: 100%; }
 

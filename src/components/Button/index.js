@@ -5,6 +5,8 @@ const Button = ({ size, children, primary, secondary, ...props }) => {
     const buttonClass = classnames({
         'btn': true,
         'btn-lg': size === 'lg',
+        'btn-md': size === 'md',
+        'btn-sm': size === 'sm',
         'btn-primary': primary === true,
         'btn-secondary': secondary === true,
     });

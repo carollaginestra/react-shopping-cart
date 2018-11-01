@@ -1,9 +1,8 @@
 const initialState = {
     products: [],
-    item: '',
-    items: []
+    sort: localStorage.getItem('SORT') || 'asc',
+    items: [],
 };
-
 
 export default (state = initialState, action) => {
     const { payload, type } = action;
@@ -12,8 +11,8 @@ export default (state = initialState, action) => {
         case 'CART_ADD_PRODUCT': {
             return {
                 ...state,
-                products: [...state.products, payload.product]
-            }
+                products: [...state.products, payload.product],
+            };
         }
         case 'CART_REMOVE_PRODUCT': {
             return {
@@ -26,20 +25,16 @@ export default (state = initialState, action) => {
                 ...state,
                 products: [],
             };
-        }   
-        case 'UPDATE_SORT': {
-            return {
-                ...state,
-                item: action.payload
-            };
         }
-        case 'FETCH_PRODUCTS': {
+        case 'UPDATE_SORT': {
+            localStorage.setItem('SORT', action.payload);
+
             return {
                 ...state,
-                items: action.payload
-            }
+                sort: action.payload,
+            };
         }
         default:
             return state;
     }
-}
+};

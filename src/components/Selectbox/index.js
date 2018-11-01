@@ -1,32 +1,33 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 class Selectbox extends React.Component {
+    createOptions = options =>
+        options.map(o => (
+            <option value={o.value} key={o.value}>
+                {o.label}
+            </option>
+        ));
 
-  createOptions = (options) => options.map( o => 
-    <option value={o.value} key={o.value}>{o.label}</option>
-  );
+    onChange = e => {
+        this.props.handleOnChange(e.target.value);
+    };
 
-  onChange = (e) => {
-    this.props.handleOnChange(e.target.value);
-  }
+    render() {
+        const { classes, options, value } = this.props;
 
-  render() {
-    const { classes, options } = this.props;
-
-    return (
-      <select onChange={ (e) => this.onChange(e) } className={classes}>
-        {this.createOptions(options)}
-      </select>
-    );
-  }
+        return (
+            <select onChange={this.onChange} value={value} className={classes}>
+                {this.createOptions(options)}
+            </select>
+        );
+    }
 }
 
-
 Selectbox.propTypes = {
-  options: PropTypes.array.isRequired,
-  classes: PropTypes.string,
-  handleOnChange: PropTypes.func.isRequired,
+    options: PropTypes.array.isRequired,
+    classes: PropTypes.string,
+    handleOnChange: PropTypes.func.isRequired,
 };
 
 export default Selectbox;

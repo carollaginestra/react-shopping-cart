@@ -1,38 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Product from './Product';
-import { selectCartProducts, sortProducts } from '../../store/cart/selectors';
-import { removeProduct, removeAllProducts, fetchProducts } from '../../store/cart/actions';
+import {
+    selectCartSortedProducts,
+    selectCartSort,
+} from '../../store/cart/selectors';
+import { removeProduct, removeAllProducts } from '../../store/cart/actions';
 import Message from '../Message';
 import Button from '../Button';
 import Sort from '../Sort';
 
 class Products extends React.Component {
-
-    state  = {
+    state = {
         loading: false,
-    }
-    
-    componentWillMount() {
-        const { sort } = this.props;
-    
-        this.handleFetchProducts(sort);
-    }
-    
-    componentWillReceiveProps(nextProps) {
-        const { sort: nextSort } = nextProps;
-    
-        if (nextSort !== this.props.sort) {
-            this.handleFetchProducts( undefined, nextSort);
-        }
-    }
-    
-    handleFetchProducts = (sort = this.props.sort) => {
-        this.setState({ loading: true });
-        this.props.fetchProducts(sort, () => {
-            this.setState({ loading: false });
-        });
-    }
+    };
 
     onRemoveProduct = product => event => {
         event.preventDefault();
@@ -47,7 +28,7 @@ class Products extends React.Component {
     };
 
     render() {
-        const { products } = this.props;
+        const { products = [] } = this.props;
 
         if (!products.length) {
             return <Message>0 products in your cart, add some.</Message>;
@@ -66,30 +47,26 @@ class Products extends React.Component {
 
                 <Sort />
 
-                {
-                    products.length &&
-                    products.map((product, index) => (
-                        <Product
-                            {...product}
-                            key={index}
-                            onDelete={this.onRemoveProduct(product)}
-                        />
-                    ))
-                }
+                {products.map((product, index) => (
+                    <Product
+                        {...product}
+                        key={index}
+                        onDelete={this.onRemoveProduct(product)}
+                    />
+                ))}
             </div>
         );
     }
 }
 
-const mapStateToProps = state => ({
-    products: selectCartProducts(state),
-    sort: sortProducts(state),
+const mapStateToProps = store => ({
+    products: selectCartSortedProducts(store),
+    sort: selectCartSort(store),
 });
 
 const mapDispatchToProps = {
     removeProduct,
     removeAllProducts,
-    fetchProducts
 };
 
 const Connect = connect(

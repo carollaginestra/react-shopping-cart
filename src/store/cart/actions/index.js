@@ -18,40 +18,8 @@ export const removeAllProducts = () => ({
 });
 
 export const updateSort = (sort) => dispatch => {
-
     dispatch({
         type: 'UPDATE_SORT',
         payload: sort,
     });
-}  
-
-const compare = {
-    'lowestprice': (a, b) => {
-        if (a.price < b.price)
-        return -1;
-        if (a.price > b.price)
-        return 1;
-        return 0;
-    },
-    'highestprice': (a, b) => {
-        if (a.price > b.price)
-        return -1;
-        if (a.price < b.price)
-        return 1;
-        return 0;
-    }
-}
-
-export const fetchProducts = (sortBy) => dispatch => {
-    let products = [];
-
-    if(!!sortBy){
-        products = products.sort(compare[sortBy]);
-    }
-
-    return dispatch({
-        type: 'FETCH_PRODUCTS',
-        payload: products
-    });
-
 }

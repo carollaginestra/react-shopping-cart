@@ -1,42 +1,44 @@
 import React from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import { updateSort } from '../../store/cart/actions';
-import { sortProducts } from '../../store/cart/selectors';
+import { selectCartSort } from '../../store/cart/selectors';
 import Selectbox from '../Selectbox';
 
 const sortBy = [
-    { value: '',           label: 'Select'  },
-    { value: 'lowestprice', label: 'Lowest to highest' },
-    { value: 'highestprice', label: 'Highest to lowest' },
-]
+    { value: 'asc', label: 'Lowest to highest' },
+    { value: 'desc', label: 'Highest to lowest' },
+];
 
 class Sort extends React.Component {
-
-    handleSort = (value) => {
+    handleSort = value => {
         this.props.updateSort(value);
-    }
+    };
 
     render() {
-
         return (
             <div className="sort">
-                Order by <Selectbox options={sortBy} handleOnChange={this.handleSort} />
+                Order by{' '}
+                <Selectbox
+                    options={sortBy}
+                    value={this.props.sort}
+                    handleOnChange={this.handleSort}
+                />
             </div>
         );
     }
 }
 
 const mapStateToProps = state => ({
-    sort: sortProducts(state),
+    sort: selectCartSort(state),
 });
 
 const mapDispatchToProps = {
-    updateSort
+    updateSort,
 };
 
 const Connect = connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
 );
 
 export default Connect(Sort);

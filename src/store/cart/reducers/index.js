@@ -1,27 +1,43 @@
 const initialState = {
-    products: [],
-    quantity: 0,
-    id: null,
+    products: JSON.parse(localStorage.getItem('PRODUCTS')) || [],
+    sort: localStorage.getItem('SORT') || 'asc',
+    items: [],
 };
 
 export default (state = initialState, action) => {
-    const {payload} = action;
-    if(typeof state === 'undefined') {
-        return Object.assign({}, initialState)
-    }
+    const { payload, type } = action;
 
-    switch(action.type) {
-        case 'CART_ADD_PRODUCT' : {
-            return Object.assign({}, state, {
+    switch (type) {
+        case 'CART_ADD_PRODUCT': {
+            localStorage.setItem('PRODUCTS', JSON.stringify([...state.products, payload.product]));
+            return {
+                ...state,
                 products: [...state.products, payload.product],
-            });
+            };
         }
         case 'CART_REMOVE_PRODUCT': {
-            return state.products.filter(products =>
-                state.id !== payload.id
-            );
+            localStorage.setItem('PRODUCTS', JSON.stringify(state.products.filter(({ id }) => id !== payload.id)));
+            return {
+                ...state,
+                products: state.products.filter(({ id }) => id !== payload.id),
+            };
         }
+        case 'CART_REMOVE_ALL_PRODUCTS': {
+            localStorage.setItem('PRODUCTS', JSON.stringify([]));
+            return {
+                ...state,
+                products: [],
+            };
+        }
+        case 'UPDATE_SORT': {
+            localStorage.setItem('SORT', action.payload);
 
-        default: return state;
+            return {
+                ...state,
+                sort: action.payload,
+            };
+        }
+        default:
+            return state;
     }
-}
+};

@@ -10,7 +10,7 @@ import Product1 from './images/prod1.jpg';
 import './styles/css/style.css';
 
 class App extends Component {
-    onAddProduct = (e) => {
+    onAddProduct = e => {
         const { addProduct } = this.props;
 
         e.preventDefault();
@@ -23,14 +23,22 @@ class App extends Component {
         });
     };
 
-
     render() {
         return (
             <div className="container">
                 <Header title="Checkout" />
 
                 <main>
-                    <Products/>
+                    <Button
+                        type="button"
+                        size="lg"
+                        onClick={this.onAddProduct}
+                        secondary
+                    >
+                        Add Test Product
+                    </Button>
+
+                    <Products />
 
                     <Summary />
 
@@ -45,9 +53,6 @@ class App extends Component {
                     <Button type="button" size="lg" secondary>
                         Cancel
                     </Button>
-                    <Button type="button" size="lg" onClick={this.onAddProduct} secondary>
-                        Add Test Product
-                    </Button>
                 </main>
             </div>
         );
@@ -55,13 +60,16 @@ class App extends Component {
 }
 
 const mapDispatchToProps = {
-    addProduct
+    addProduct,
 };
 
 // 1. state to props
 // 2. dispatch to pros
 // 3. merge props
 // 4. options
-const Connect = connect(null, mapDispatchToProps);
+const Connect = connect(
+    null,
+    mapDispatchToProps,
+);
 
 export default Connect(App);

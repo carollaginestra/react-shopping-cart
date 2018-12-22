@@ -1,4 +1,4 @@
-# Create react app project
+# React shopping cart
 
 This is my first project using create-react-app during the mentoring studies of the [training-center](https://github.com/training-center) project with the mentor [Cezar Luiz](https://github.com/cezarlz).
 
